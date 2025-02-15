@@ -20,17 +20,13 @@ Give me a new (x) value that satisfies the following:
 Do not write code or any explanation. The output must end with numerical value for (x) only."""
 
 prompt_template = ChatPromptTemplate.from_template(template)
-
 vals = f" 0.05, {forrester(0.05)} \n 0.95, {forrester(0.95)} \n 0.5, {forrester(0.5)} \n"
-
 prompt = prompt_template.invoke({"values": vals})
 
 load_dotenv()
 model = ChatGoogleGenerativeAI(model="gemini-1.5-flash")
 
-
 num_steps = 10
-
 for i in range(num_steps):
     result = model.invoke(prompt)
     x = float(result.content)
