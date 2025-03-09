@@ -17,12 +17,10 @@ persistent_directory = os.path.join(current_dir, "db", "chroma_db")
 
 if not os.path.exists(persistent_directory):
     print("Persistent directory does not exist. Initializing vector store...")
-
     if not os.path.exists(file_path):
         raise FileNotFoundError(
             f"The file {file_path} does not exist. Please check the path."
         )
-
     loader = TextLoader(file_path)
     documents = loader.load()
 
